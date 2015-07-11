@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 打成jar包运行时，请将注释打开 <properties resource="configuration/database_configuration.properties"/>-->
+	<typeAliases> 
+        <typeAlias alias="Order" type="com.yuanqi.packinglines.entity.order.Order"/>
+        <typeAlias alias="Task" type="com.yuanqi.packinglines.entity.task.Task"/> 
+        <typeAlias alias="Line" type="com.yuanqi.packinglines.entity.line.Line"/>
+        <typeAlias alias="Material" type="com.yuanqi.packinglines.entity.material.Material"/>
+        <typeAlias alias="PackFlowDetail" type="com.yuanqi.packinglines.entity.packflowdetail.PackFlowDetail"/>
+    	<typeAlias alias="Operator" type="com.yuanqi.packinglines.entity.operator.Operator"/>
+    </typeAliases> 
+	
+	 <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+      	
+      	<!-- +++++++++++++++++++++++++++打成jar包运行时请使用如下数据库连接参数++++++++++++++++++++++++++++++++++++++++
+        <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://${jdbc.ip}:${jdbc.port};DatabaseName=${jdbc.databasename}"/>
+        <property name="username" value="${jdbc.username}"/> 
+        <property name="password" value="${jdbc.password}"/>
+         -->
+         
+         
+        <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=product"/>
+        <property name="username" value="sa"/> 
+        <property name="password" value="QAZqaz01"/>
+        
+      </dataSource>
+    </environment>
+  </environments>
+    
+    <mappers>
+        <mapper resource="com/yuanqi/packinglines/entity/order/Order.xml"/>
+        <mapper resource="com/yuanqi/packinglines/entity/task/Task.xml"/>
+        <mapper resource="com/yuanqi/packinglines/entity/line/Line.xml"/>
+        <mapper resource="com/yuanqi/packinglines/entity/material/Material.xml"/>
+        <mapper resource="com/yuanqi/packinglines/entity/packflowdetail/PackFlowDetail.xml"/>
+        <mapper resource="com/yuanqi/packinglines/entity/operator/Operator.xml"/>
+    </mappers>
+</configuration>

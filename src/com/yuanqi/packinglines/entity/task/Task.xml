@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuanqi.packinglines.inter.TaskOperation">
+    
+    <!-- 按订单ID查询对应的任务信息 -->
+    <select id="selectTaskByOrderId" parameterType="String" resultType="Task">
+        select taskid,taskname,num,taskStatus,materialID from t_taskPack where orderid=#{orderId}
+    </select>
+</mapper>
+
+	
