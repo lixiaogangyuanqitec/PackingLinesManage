@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuanqi.packinglines.inter.OrderOperation">
+    
+    <!-- 查询全部订单信息 -->
+    <select id="selectAllOrderInfo" parameterType="String" resultType="Order">
+        select orderid,ordername from t_order
+    </select>
+    
+    <!-- 按订单ID查询订单信息-->
+    <select id="selectOrderInfoByOrderId" parameterType="String" resultType="Order">
+    	select orderid,ordername from t_order where orderid like '%'+#{orderId}+'%' 
+    </select>
+</mapper>
+
+	

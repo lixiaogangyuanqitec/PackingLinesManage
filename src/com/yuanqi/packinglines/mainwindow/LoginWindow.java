@@ -15,7 +15,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import com.yuanqi.packinglines.service.operator.OperatorService;
 import com.yuanqi.packinglines.util.PropertiesUtil;
 import com.yuanqi.packinglines.util.SecurityEncode;
-import org.eclipse.swt.widgets.Link;
 public class LoginWindow {
 
 	protected Shell shell;
