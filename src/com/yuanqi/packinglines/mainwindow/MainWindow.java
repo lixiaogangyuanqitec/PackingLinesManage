@@ -9,8 +9,10 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -24,10 +26,12 @@ import com.yuanqi.packinglines.service.line.LineService;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 
 public class MainWindow {
 
-	protected Shell shell;
+	protected Shell shlApl;
 	private Text text_task_no;
 	private Table table;
 	private Text text_products_no;
@@ -69,9 +73,9 @@ public class MainWindow {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
+		shlApl.open();
+		shlApl.layout();
+		while (!shlApl.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -82,11 +86,11 @@ public class MainWindow {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shell = new Shell();
-		shell.addShellListener(new ShellAdapter() {
+		shlApl = new Shell();
+		shlApl.addShellListener(new ShellAdapter() {
 			@Override
 			public void shellClosed(ShellEvent e) {
-				boolean bb = MessageDialog.openQuestion(shell, "提示", "确定退出吗？");
+				boolean bb = MessageDialog.openQuestion(shlApl, "提示", "确定退出吗？");
 				if (bb) {
 					e.doit = true;
 				} else {
@@ -94,9 +98,9 @@ public class MainWindow {
 				}
 			}
 		});
-		shell.setMaximized(true);
-		shell.setText("\u5305\u88C5\u6D41\u6C34\u7EBF\u7BA1\u7406\u7CFB\u7EDF");
-		Group group = new Group(shell, SWT.NONE);
+		shlApl.setMaximized(true);
+		shlApl.setText("APL-\u5305\u88C5\u6D41\u6C34\u7EBF\u7BA1\u7406\u7CFB\u7EDF");
+		Group group = new Group(shlApl, SWT.NONE);
 		group.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group.setText("\u57FA\u672C\u4FE1\u606F");
 		group.setBounds(10, 10, 303, 289);
@@ -180,7 +184,7 @@ public class MainWindow {
 		LineService ls = new LineService();
 		combo_thread_no.setItems(ls.getDataLine());
 
-		Group group_1 = new Group(shell, SWT.NONE);
+		Group group_1 = new Group(shlApl, SWT.NONE);
 		group_1.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_1.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
 		group_1.setText("\u4EA7\u54C1\u4FE1\u606F");
@@ -243,7 +247,7 @@ public class MainWindow {
 		text_task_complete_num.setBounds(77, 232, 202, 23);
 		text_task_complete_num.setEditable(false);
 
-		Group group_2 = new Group(shell, SWT.NONE);
+		Group group_2 = new Group(shlApl, SWT.NONE);
 		group_2.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_2.setText("\u5408\u8BA1");
 		group_2.setBounds(10, 630, 303, 65);
@@ -259,7 +263,7 @@ public class MainWindow {
 		lblNewLabel_1.setBounds(189, 30, 61, 17);
 		lblNewLabel_1.setText("0");
 
-		Group group_3 = new Group(shell, SWT.NONE);
+		Group group_3 = new Group(shlApl, SWT.NONE);
 		group_3.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_3.setText("\u5DE5\u827A\u6D41\u7A0B\u660E\u7EC6\u8868");
 		group_3.setBounds(340, 10, 990, 318);
@@ -285,7 +289,7 @@ public class MainWindow {
 		tc3.setText("\u6570\u636E\u63A5\u6536\u65F6\u95F4");// 设置列名
 		tc3.setWidth(265);
 
-		Group group_4 = new Group(shell, SWT.NONE);
+		Group group_4 = new Group(shlApl, SWT.NONE);
 		group_4.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 		group_4.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_4.setText("\u5305\u88C5\u8FDB\u5EA6\u6C47\u603B");
@@ -333,7 +337,7 @@ public class MainWindow {
 		TableItem item1_6 = new TableItem(table_1, SWT.NONE);
 		item1_6.setText(new String[] { "6", "扫码装箱", "10", "4", "40%", "良好" });
 
-		Group group_5 = new Group(shell, SWT.NONE);
+		Group group_5 = new Group(shlApl, SWT.NONE);
 		group_5.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_5.setText("\u88C5\u7BB1\u4FE1\u606F");
 		group_5.setBounds(338, 334, 992, 55);
@@ -356,7 +360,7 @@ public class MainWindow {
 		label_15.setBounds(201, 25, 61, 20);
 		label_15.setText("\u7BB1");
 
-		Group group_6 = new Group(shell, SWT.NONE);
+		Group group_6 = new Group(shlApl, SWT.NONE);
 		group_6.setFont(SWTResourceManager.getFont("微软雅黑", 10, SWT.BOLD));
 		group_6.setText("\u64CD\u4F5C\u6309\u94AE");
 		group_6.setBounds(340, 630, 990, 65);
@@ -366,9 +370,9 @@ public class MainWindow {
 			@Override
 			public void mouseUp(MouseEvent e) {
 				if (!combo_thread_no.getText().equals("")) {
-					MessageDialog.openInformation(shell, "提示", "下发成功");
+					MessageDialog.openInformation(shlApl, "提示", "下发成功");
 				} else {
-					MessageDialog.openInformation(shell, "提示", "请选择线体编号");
+					MessageDialog.openInformation(shlApl, "提示", "请选择线体编号");
 				}
 			}
 		});
@@ -397,6 +401,40 @@ public class MainWindow {
 		});
 		button_2.setBounds(279, 26, 80, 27);
 		button_2.setText("\u505C\u6B62");
-
+		
+		Menu menu = new Menu(shlApl, SWT.BAR);
+		shlApl.setMenuBar(menu);
+		
+		MenuItem menuItem = new MenuItem(menu, SWT.CASCADE);
+		menuItem.setText("\u6587\u4EF6");
+		
+		Menu menu_1 = new Menu(menuItem);
+		menuItem.setMenu(menu_1);
+		
+		MenuItem menuItem_1 = new MenuItem(menu_1, SWT.NONE);
+		menuItem_1.setText("\u9000\u51FA");
+		menuItem_1.addListener(SWT.Selection, new Listener() {
+      public void handleEvent(Event e) {
+          shlApl.dispose();
+      }
+		});
+		
+		
+		MenuItem menuItem_2 = new MenuItem(menu, SWT.CASCADE);
+		menuItem_2.setText("\u5E2E\u52A9");
+		
+		
+		
+		Menu menu_2 = new Menu(menuItem_2);
+		menuItem_2.setMenu(menu_2);
+		
+		MenuItem menuItem_3 = new MenuItem(menu_2, SWT.NONE);
+		menuItem_3.setText("\u5173\u4E8E");
+		menuItem_3.addListener(SWT.Selection, new Listener() {
+      public void handleEvent(Event e) {
+          AboutInfoWindow aiw=new AboutInfoWindow(shlApl);
+          aiw.open();
+      }
+  });
 	}
 }

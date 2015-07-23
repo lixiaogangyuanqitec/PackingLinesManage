@@ -185,7 +185,7 @@ public class LoginWindow {
 	protected void createContents() {
 		shell = new Shell(SWT.CLOSE);
 		shell.setSize(450, 298);
-		shell.setText("\u5305\u88C5\u6D41\u6C34\u7EBF\u7BA1\u7406\u7CFB\u7EDF");
+		shell.setText("\u81EA\u52A8\u5316\u751F\u4EA7\u7EBF\u7BA1\u7406\u7CFB\u7EDF");
 		
 	}
 }
