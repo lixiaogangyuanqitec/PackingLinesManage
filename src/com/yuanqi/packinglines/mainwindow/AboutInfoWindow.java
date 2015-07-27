@@ -20,7 +20,6 @@ public class AboutInfoWindow extends Dialog
 
   public AboutInfoWindow(Shell parent) {
     super(parent, SWT.NONE);
-    // TODO Auto-generated constructor stub
   }
   
   protected Shell shlAboutApl;
